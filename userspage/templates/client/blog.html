@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--bootstrap css cdn link-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<!--boxicon css link-->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<!-- fontawesome cdn link css -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="images/x-icon">
+	<!--aos animation css-->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<!--custom css-->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<style>
+		.aa {
+			height: 30px;
+			width: 30px;
+		}
+
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+			font-family: Arial;
+		}
+
+		.a {
+			background: rgba(0, 0, 0, 0.6);
+			box-sizing: border-box;
+			height: 60px;
+			width: 100%;
+			top: 0;
+			left: 0;
+			border-bottom: 1px solid #fff;
+		}
+
+		nav .logo {
+			padding: 22px 20px;
+			height: 80px;
+			float: left;
+			font-size: 24px;
+			font-weight: bold;
+			text-transform: uppercase;
+			color: #fff;
+		}
+
+		nav ul {
+			list-style: none;
+			float: right;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			position: relative;
+		}
+
+		ul li a {
+			line-height: 60px;
+			color: #fff;
+			padding: 12px 30px;
+			text-decoration: none;
+			font-size: 14px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		ul li a:hover {
+			background: rgba(1, 0, 3, 0.845);
+			border-radius: 6px;
+		}
+
+		body {
+
+			width: 100%;
+			height: 100vh;
+			background-size: cover;
+			background-position: center;
+		}
+	</style>
+
+	{% block title %}
+	{{section.title}}
+	{% endblock %}
+</head>
+<header class="pt-1 px-1 pb-0 a">
+	<div class="container-fluid">
+		<nav>
+			<img class="" src="{% static 'images/logo.png' %}" alt="" height="53px">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/foods">foods</a></li>
+				<li><a href="/about">About Us</a></li>
+				{% if user.is_authenticated %}
+				<li><a class="text-primary" href="/mycart">mycart</a></li>
+				<li><a class="text-info" href="/myorder">myorder</a></li>
+				<li><a class="text-warning" href="/logout">logout</a></li>
+				{% else %}
+				<li><a class="text-primary" href="/register">signup</a></li>
+				<li><a class="text-warning" href="/login">logout</a></li>
+			</ul>
+			{% endif %}
+
+		</nav>
+	</div>
+</header>
+
+<body>
+
+	{% block main_content %}
+	<div class="main">
+		<div class="container mt-5">
+			<div>
+				<p class="text-center fs-1 ">Online Food Ordering and Delivery System</p>
+				<p class="text-center fs-4">Online Ordering System For Takeaway, Delivery, Order Ahead & Table
+					Reservations in One Solution</p>
+				<p class=" text-center mb-3">________</p>
+			</div>
+			<div>
+				<div class="row">
+					<div class="col-md-5">
+						<p class="fs-1 ">Complete Online Food Ordering and Delivery System. On demand.</p>
+						<p class="fs-6">Searching for an online food ordering system with table reservations, pickup and
+							delivery software?</p>
+						<p class="fs-6">Say no more. We’ve got you covered. </p>
+						<p>Our online food ordering and delivery system <b>centralizes all pick-up, delivery & dine in
+								orders</b>, so you can easily be in full control of your business.</p>
+					</div>
+					<div class="col-md-5 shadow-lg">
+						<img src="{% static 'images/blog.png' %}" alt="" height="650">
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="container mt-4">
+			<div>
+				<div class="row justify-content-between">
+					<div class="col-md-5 shadow-lg">
+						<img src="{% static 'images/blog1.png' %}" alt="" height="700" class="mr-5">
+					</div>
+					<div class="col-md-5 shadow-lg">
+						<br>
+						<br>
+						<br>
+						<p class="fs-2 mt-2">Take unlimited orders from your website, Facebook page or mobile app
+						</p>
+						<p class="mt-2">Who said that online ordering has to be complicated?</p>
+						<p>With our free restaurant ordering system, you can set up an account & start taking online
+							orders within minutes, straight from your:</p>
+						<div class="">
+
+							<p> <i class="fa-solid fa-check"></i> website</p>
+							<p>It’s easy to boost your profits & save on food portal commission fees when you rely on a
+								powerful ordering system. </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mt-5">
+			<div class="row justify-content-between">
+				<div class="col-md-5 shadow-lg mb-5">
+					<img src="{% static 'images/map.png' %}" alt="" height="700">
+				</div>
+				<div class="col-md-5 shadow-lg mb-5">
+					<p class="fs-1">Expand your Online Business with a Restaurant Delivery Software</p>
+					<p>Follow these 3 simple steps:</p>
+					<p>1. Create an account & fill in your restaurant profile
+					<p>	2. Enable delivery & draw your own delivery zones</p>
+						3. Go to “Other” & choose the restaurant delivery integration that best fits your needs.</p>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	{% endblock %}
+
+	<div class="container-fluid">
+		<footer class="py-3 ">
+			<div class="row">
+				<div class="col-6 col-md-2 mb-3">
+					<h5>Section</h5>
+					<ul class="nav flex-column">
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+					</ul>
+				</div>
+
+				<div class="col-6 col-md-2 mb-3">
+					<h5>Section</h5>
+					<ul class="nav flex-column">
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+					</ul>
+				</div>
+
+				<div class="col-6 col-md-2 mb-3">
+					<h5>Section</h5>
+					<ul class="nav flex-column">
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+						<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-5 offset-md-1 mb-3">
+					<form>
+						<h5>Subscribe to our newsletter</h5>
+						<p>Monthly digest of what's new and exciting from us.</p>
+						<div class="d-flex flex-column flex-sm-row w-100 gap-2">
+							<label for="newsletter1" class="visually-hidden">Email address</label>
+							<input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+							<button class="btn btn-primary" type="button">Subscribe</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+				<p>&copy; 2023 Company, Inc. All rights reserved.</p>
+				<ul class="list-unstyled d-flex">
+					<li class="ms-3"><a class="link-body-emphasis" href="#"></a></li>
+					<li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
+								<use xlink:href="#instagram" />
+							</svg></a></li>
+					<li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
+								<use xlink:href="#facebook" />
+							</svg></a></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+	<!--bootstrap js cdn link-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+		crossorigin="anonymous"></script>
+
+	<!--aos animation js-->
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init({
+			duration: 1200,
+			once: true
+		});
+	</script>
+
+</body>
+
+</html>

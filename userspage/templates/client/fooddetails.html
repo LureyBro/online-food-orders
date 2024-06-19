@@ -1,0 +1,33 @@
+{% extends "client/layouts.html" %}
+{% load static %}
+
+{% block title %}
+<title>online Food-{{food.food_name}}</title>
+{% endblock %}
+
+{% block main_content %}
+
+<!--Foods detail container start -->
+<div class="container mt-3">
+	<div class="bg-white">
+		<div class="shadow-lg mb-3">
+			<div class="row d-flex justify-content-evenly p-4">
+			  <div class="col-md-4 p-2 shadow-lg "data-aos="fade-up-right">
+				<img src="/{{food.Food_image}}" class="img-fluid rounded-start mt-5 " alt="{{food.food_name}}">
+			  </div>
+			  <div class="col-md-7 shadow-lg p-5" data-aos="fade-up-right">
+				<div class="card-body">
+				  <h3 class="card-title">{{food.food_name}}</h3>
+				  <h3 class="card-title">Rs.{{food.food_price}}</h3>
+				  <h3 class="text-muted">Category:{{food.category}}</h3>
+				  <p class="card-text">{{food.food_description}}</p>
+				  <h4 class="text-muted">{{food.created_by}}</h4>
+				  <a href="/add_to_cart/{{food.id}}"><button class="btn btn-warning px-4 rounded-pill">Add to Cart</button></a>
+				</div>
+			  </div>
+			</div>
+		  </div>
+	</div>
+</div>
+<!--Foods detail container end-->
+{% endblock %}

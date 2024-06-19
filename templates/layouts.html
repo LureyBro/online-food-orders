@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--bootstrap css cdn link-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<!--boxicon css link-->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<!-- fontawesome cdn link css -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="images/x-icon">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+	{% block title %}
+	{{section.title}}
+	{% endblock %} 
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="d-flex justify-content-end">
+			<div class="col-md-1 mt-3">
+				<button class="btn btn-success text-center ms-5" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+					aria-controls="offcanvasRight" title="Menu">
+					☰
+				</button>
+				<div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="offcanvasRight"
+					aria-labelledby="offcanvasRightLabel" style="width:300px;">
+					<div class="offcanvas-header">
+						<h5 id="offcanvasRightLabel">Admin Dashboard</h5>
+						<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+							aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body">
+						<ul class="list-unstyled">
+							<li><a href="/dashboard" class="text-decoration-none text-white">Dashboard</a></li>
+							<li><a href="#" class="text-decoration-none text-white">Users</a></li>
+							<li><a href="/demo/food" class="text-decoration-none text-white">Food</a></li>
+							<li><a href="/demo/addfood" class="text-decoration-none text-white">Add Food</a></li>
+							<li><a href="/demo/category" class="text-decoration-none text-white">Categories</a></li>
+							<li><a href="/demo/addcategory" class="text-decoration-none text-white">Add Categories</a></li>
+							<li><a href="/Admin/usersorder" class="text-decoration-none text-white">Orders</a></li>
+						</ul>
+					</div>
+					<div class="offcanvas-body">
+						<ul class="list-unstyled">
+							<li><a href="#" class="text-decoration-none text-white">
+									<b>Name : </b> admin
+								</a></li>
+							<li><a href="#" class="text-decoration-none text-white">
+									<b>Email : </b> admin@gmail.com
+								</a></li>
+						</ul>
+						<div class="img">
+							<img src="{% static 'images/photo.jpeg' %}"
+								alt="" class="img-fluid rounded-circle" width="200">
+						</div>
+						<a href="/logout" class="btn btn-warning text-decoration-none">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<div class="main">
+		{% block main_content %}
+
+		{% endblock %}
+	</div>
+	<!--bootstrap js cdn link-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>

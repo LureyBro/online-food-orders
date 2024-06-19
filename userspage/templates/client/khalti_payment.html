@@ -1,0 +1,16 @@
+{% extends "client/layouts.html" %}
+{% load static %}
+
+{% block title %}
+<title>Online Foods || Esewa-Payment </title>
+{% endblock %}
+
+{% block main_content %}
+<form action="" method="POST">
+	<input type="hidden" name="purchase_order_id" value="{{}}">
+	<input type="hidden" name="amount" value="1000">
+	<input type="hidden" name="return_url" value="{% url 'userpage:mycart'%}">
+	
+
+</form>
+{% endblock %}

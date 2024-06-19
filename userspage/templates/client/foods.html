@@ -1,0 +1,74 @@
+{% extends "client/layouts.html" %}
+{% load static %}
+
+{% block title %}
+<title>Online Food || Food-All Recipy</title>
+{% endblock %}
+
+{% block main_content %}
+
+
+
+<!--Food container start -->
+<div class="container-fluid mt-1">
+	<h1 class="text-center text-warning text-bold p-3 block",>
+		Available Foods
+	</h1>
+	<!--food filter form start-->
+<div class="container my-3">
+	<form class="fs-5 text-white" >
+		{{food_filter.form}}
+		<button class="btn btn-primary " type="submit">Search</button>
+	</form>
+</div>
+
+<!--food filter form end-->
+	<div class="row row-cols-1 row-cols-md-4 g-4">
+		{% for food in foods %}
+		<div class="col " data-aos="zoom-out-up">
+			<div class="card  productss">
+				<img src="/{{food.Food_image}}" class="card-img-top" alt="{{recipy.food_name}}">
+				<div class="card-body">
+					<h5 class="card-title">{{food.food_name}}</h5>
+					<h5 class="text-muted">Rs.{{food.food_price}}</h5>
+					<a href="/fooddetails/{{food.id}}"><button class="btn btn-success px-4 rounded-pill">View Details</button>
+					</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<!--recipy container end-->
+{% endblock %}
+
+
+<div class="container-fluid">
+	<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+		<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+			<img src="{% static 'images/logo.jpg' %}" alt="" width="50" class="aa">
+		</a>
+
+		<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ps-5">
+			<li><a href="/" class="nav-link px-2 text-secondary ps-5">Home</a></li>
+			<li><a href="/foods" class="nav-link px-2 text-white ps-5">Foods</a></li>
+			<li><a href="/faqs" class="nav-link px-2 text-white ps-5">FAQs</a></li>
+			<li><a href="#" class="nav-link px-2 text-white ps-5">About</a></li>
+		</ul>
+
+		<form class="form-inline my-2 my-lg-0" method="post">
+			<input class="form-control " type="search" placeholder="Search" aria-label="Search">
+		</form>
+		</form>
+		<div class="text-end">
+			{% if user.is_authenticated %}
+			<a href="/mycart" class="btn btn-info">MyCart</a>
+			<a href="/myorder" class="btn btn-success">MyOrder</a>
+			<a href="/logout" class="btn btn-danger">Logout</a>
+			{% else %}
+			<a href="/register" class="btn btn-warning">Signup</a>
+			<a href="/login" class="btn btn-primary">Login</a>
+			{% endif %}
+		</div>
+	</div>
+</div>
