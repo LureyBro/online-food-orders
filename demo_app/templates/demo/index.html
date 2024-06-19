@@ -1,0 +1,52 @@
+{% extends "layouts.html" %}
+{% load static %}
+
+{% block title %}
+<title>Foods</title>
+{% endblock %}
+
+{% block main_content %}
+
+{% for msg in messages %}
+{% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<div class="alert alert-success">
+	{{msg}}
+</div>
+{% endif %}
+{% endfor %}
+<div class="container-fluid mt-4">
+	<table border="4" class="table table-bordered  table-hover">
+		<thead>
+			<tr>
+				<th>Food Name</th>
+				<th>Food Price</th>
+				<th>Food Description</th>
+				<th>Food Images</th>
+				<th>Created By</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for post in food %}
+			<tr>
+				<td>{{post.food_name}}</td>
+				<td>{{post.food_price}}</td>
+				<td>{{post.food_description}}</td>
+				<td><img src="/{{post.Food_image}}" alt="" width="150"></td>
+				<td>{{post.created_by}}</td>
+				<td>
+					<a href="/demo/update_food/{{post.id}}" class="btn btn-primary text-white">
+						<i class="bx bxs-edit"></i>
+					</a>
+					&nbsp;
+					<a href="/demo/delete_food/{{post.id}}" class="btn btn-danger text-white"
+						onclick="return confirm('Are You Soure want to Delete this Recipy?')">
+						<i class="bx bxs-trash-alt"></i>
+					</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

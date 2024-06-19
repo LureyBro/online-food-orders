@@ -1,0 +1,84 @@
+{% extends "accounts/layouts.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Admin || Dashboard</title>
+{% endblock %}
+
+{% block main_content %}
+<div class="container-fluid mt-3">
+	<div class="row justify-content-around">
+		<div class="col-md-3">
+			<div class="card card-body shadow-lg">
+				<h4 class="mb-2">Customer:</h4>
+			<hr>
+			<div class="div border-primary">
+				<h4 class="text-primary shadow text-center p-2 mb-2">
+					Update Customer
+				</h4>
+			</div>
+			<div class="div border-primary ">
+				<h4 class="text-danger shadow text-center p-2 ">
+					Delete Customer
+				</h4>
+			</div>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="card card-body shadow-lg">
+				<h4>Contact Information</h4>
+				<hr>
+				<p>Name : {{ user }} </p>
+				<p>Phone :{{ contact_no }} </p>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card card-body shadow-lg">
+				<h5>Total Order</h5>
+				<hr>
+				<h1 style="text-align: center;">{{order_count}} </h1>
+				<h5 class="text-center mb-3 mr-2">3</h5>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-9 justify-content-center shadow-lg">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Food</th>
+						<th>Category</th>
+						<th>Order Date</th>
+						<th>Status</th>
+						<th>Update</th>
+						<th>Remove</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for order in order %}
+					<tr>
+						<td>{{order.food.food_name}}</td>
+						<td>{{order.food.category}}</td>
+						<td>{{order.order_date}}</td>
+						<td>{{order.status}}</td>
+						<td><a href="/updateadmin/{{post.id}}" class="btn btn-primary text-white">
+							<i class="bx bxs-edit"></i>
+						</a></td>
+						<td><a href="/demo/delete_food/{{post.id}}" class="btn btn-danger text-white"
+							onclick="return confirm('Are You Soure want to Delete this food?')">
+							<i class="bx bxs-trash-alt"></i>
+						</a></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

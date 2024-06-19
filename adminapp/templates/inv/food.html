@@ -1,0 +1,57 @@
+{% extends "accounts/layouts.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Admin || Dashboard</title>
+{% endblock %}
+
+{% block main_content %}
+
+{% for msg in messages %}
+{% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<div class="alert alert-success">
+	{{msg}}
+</div>
+{% endif %}
+{% endfor %}
+<div class="container-fluid mt-2">
+	<h2 class=" text-center text-info justify-content-center mr-3">
+		Foods
+	</h2>
+	<div class="row">
+		<div class="col-md-10 justify-content-around">
+			<div class="shadow-lg">
+				<table class="table table-bordered  table-hover">
+					<thead>
+						<tr>
+							<th class="text-success">Food Name</th>
+							<th class="text-success">Food Price</th>
+							<th class="text-success">Image</th>
+							<th class="text-success">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for post in food %}
+						<tr>
+							<td>{{post.food.food_name}}</td>
+							<td>{{post.food.food_price}}</td>
+							<td>{{post.food.category}}</td>
+							<td>
+								<a href="/demo/update_food/{{post.id}}" class="btn btn-primary text-white">
+									<i class="bx bxs-edit"></i>
+								</a>
+								&nbsp;
+								<a href="/demo/delete_food/{{post.id}}" class="btn btn-danger text-white"
+									onclick="return confirm('Are You Soure want to Delete this food?')">
+									<i class="bx bxs-trash-alt"></i>
+								</a>
+							</td>
+						</tr>	
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

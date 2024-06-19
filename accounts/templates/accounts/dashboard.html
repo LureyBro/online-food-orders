@@ -1,0 +1,225 @@
+{% extends "accounts/layouts.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Admin || Dashboard</title>
+{% endblock %}
+
+{% block main_content %}
+<div class="container-fluid">
+	<h2 class="text-center my-3 text-muted">
+		Admin Dashboard
+	</h2>
+	<div class="row d-flex">
+		<div class="col-md-6 col-xl-4 mb-4" title="Total Foods">
+			<a href="#" class="text-decoration-none">
+				<div class="card shadow border-0 py-2">
+					<div class="card-body">
+						<div class="row align-items-center no-gutters">
+							<div class="col me-2">
+								<div class="text-uppercase text-primary fw-bold text-xs mb-1 text-center">
+									<span>
+										Total Foods
+									</span>
+								</div>
+								<div class="text-secondary fw-bold mb-0 text-center">
+									<span>Out of Stock :{{ total_food }}</span>
+								</div>
+								<div class="col-auto text-center">
+									<i class='bx bxs-bowl-hot fs-1 text-success'></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-md-6 col-xl-4 mb-4" title="Total User">
+			<a href="#" class="text-decoration-none">
+				<div class="card shadow border-0 py-2 bg-warning">
+					<div class="card-body">
+						<div class="row align-items-center no-gutters">
+							<div class="col me-2">
+								<div class="text-uppercase text-light fw-bold text-xs mb-1 text-center">
+									<span>
+										Total Users : {{total_user}}
+									</span>
+								</div>
+								<div class="text-secondary fw-bold mb-0 text-center">
+									<span>Deactivated: 0</span>
+								</div>
+								<div class="col-auto text-center">
+									<i class="fas fa-users fs-1 text-success"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-md-6 col-xl-4 mb-4" title="Total Order">
+			<a href="#" class="text-decoration-none">
+				<div class="card shadow border-0 py-2 bg-success">
+					<div class="card-body">
+						<div class="row align-items-center no-gutters">
+							<div class="col me-2">
+								<div class="text-uppercase text-light fw-bold text-xs mb-1 text-center">
+									<span>
+										Total Orders : {{total_order}}
+									</span>
+								</div>
+								<div class="text-warning fw-bold mb-0 text-center">
+									<span>Delivered: {{ deliver }}</span>
+								</div>
+								<div class="col-auto text-center">
+									<i class="fas fa-bicycle fs-1 text-light"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-md-6 col-xl-4 mb-4" title="Total Sales">
+			<a href="#" class="text-decoration-none">
+				<div class="card shadow border-0 py-2 bg-danger">
+					<div class="card-body">
+						<div class="row align-items-center no-gutters">
+							<div class="col me-2">
+								<div class="text-uppercase text-light fw-bold text-xs mb-1 text-center">
+									<span>
+										Total Sales : {{ deliver }}
+									</span>
+								</div>
+								<div class="text-white fw-bold mb-0 text-center">
+									<span>Booking: {{ pending_count }}</span>
+								</div>
+								<div class="col-auto text-center">
+									<i class="fas fa-globe fs-1 text-white fa-spin"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-md-6 col-xl-4 mb-4" title="Admin">
+			<a href="#" class="text-decoration-none">
+				<div class="card shadow border-0 py-2 bg-primary">
+					<div class="card-body">
+						<div class="row align-items-center no-gutters">
+							<div class="col me-2">
+								<div class="text-uppercase text-light fw-bold text-xs mb-1 text-center">
+									<span>
+										Admins
+									</span>
+								</div>
+								<div class="text-white fw-bold mb-0 text-center">
+									<span>Super Admin: 1</span>
+								</div>
+								<div class="col-auto text-center">
+									<i class="fas fa-users fs-1 text-white"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-md-6 col-xl-4 mb-4" title="Categories">
+			<a href="#" class="text-decoration-none">
+				<div class="card shadow border-0 py-2 bg-dark">
+					<div class="card-body">
+						<div class="row align-items-center no-gutters">
+							<div class="col me-2">
+								<div class="text-uppercase text-light fw-bold text-xs mb-1 text-center">
+									<span>
+										Categories
+									</span>
+								</div>
+								<div class="text-white fw-bold mb-0 text-center">
+									<span>Sub-Categories: {{total_category}}</span>
+								</div>
+								<div class="col-auto text-center">
+									<i class="fas fa-globe fs-1 text-white fa-spin"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 mt-3 justify-content-around border-0" title="Customer">
+
+			<h3 class="text-center bg-primary border-0">Create Customer	</h3>
+			<table class=" table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Name</th>
+						<th> Contact No</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for post in order %}
+					<tr>
+						<td>
+							<a href="{% url 'showuser' post.id %}" class="text-decoration-none btn btn-info">
+								View</a>
+						</td>
+						<td class="text-info">{{post.user}}</td>
+						<td class="text-info">{{post.contact_no}}</td>
+						{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-7 mt-3 justify-content-center my-3" title="Order">
+			<h3 class="text-center bg-primary">Create Order</h3>
+			<table class=" table table-str	iped table-bordered">
+				<thead>
+					<tr>
+						<th >Food</th>
+						<th>Order Date</th>
+						<th>Status</th>
+						<th>update</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for post in order %}
+					<tr>
+						
+						<td class="text-info">{{post.food.food_name}}</td>
+						<td class="text-info">{{post.order_date}}</td>
+						<td class="text-info">{{post.status}}</td>
+						<td>
+							<a href="/create_order/{{post.id}}" class="btn btn-primary text-white">
+								<i class="bx bxs-edit"></i>
+							</a>
+						</td>
+						<td>
+							<a href="/deleteorder/{{post.id}}" class="btn btn-danger text-white"
+								onclick="return confirm('Are You Soure want to Delete this User?')">
+								<i class="bx bxs-trash-alt"></i>
+							</a>
+						</td>
+						{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}	

@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<!--boxicon css link-->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<!-- fontawesome cdn link css -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="images/x-icon">
+	<!--aos animation css-->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<!--custom css-->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<title>Document</title>
+	<style>
+		*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Arial;
+
+}
+nav{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;
+	padding: 5px 60px;
+	box-sizing: border-box;
+	background: rgba(0,0,0,0.6);
+	border-bottom: 1px solid #fff;
+}
+nav .logo{
+	padding: 22px 20px;
+	height: 80px;
+	float: left;
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+nav ul{
+	list-style: none;
+	float: right;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+nav ul li a{
+	line-height: 60px;
+	color: #fff;
+	padding: 12px 30px;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+nav ul li a:hover{
+	background: rgba(0,0,0,0.7);
+	border-radius: 6px;
+}
+.container-fluid{
+	width: 100%;
+	height: 100vh;
+	background-image: url('{% static "images/b.jpg" %}');
+	background-size: cover;
+	background-position: center;
+
+}
+.main{
+	height: 200px;
+	width: 100%;
+}
+.search{
+	margin-top: 400px;
+	margin-left: 400px;
+}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<nav>
+			<img class="" src="{% static 'images/log.png' %}" alt="" height="55px">
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">foods</a></li>
+				<li><a href="#">faqs</a></li>
+
+				<li><a href="#">mycart</a></li>
+				<li><a href="#">myorder</a></li>
+				<li><a href="#">logout</a></li>
+			</ul>
+			<!--<button type="button">suscribe</button>-->
+		</nav>
+		<!--Hotels hotel_filter-->
+<div class="container mt-3">
+	<h2 class="text-muted text-primary-emphasis">
+		Hotels Search
+	</h2>
+	<div class="row d-flex  ml-5">
+			<form class="text-info ">
+				{{hotel_filter.form}}
+				<button class="btn btn-success" type="submit">Search</button>
+			</form>
+	</div>
+</div>
+
+		
+	</div>
+	<div class="main"></div>
+	<!--bootstrap js cdn link-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+		crossorigin="anonymous"></script>
+
+	<!--aos animation js-->
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init({
+			duration:1200,
+			once:true
+		});
+	  </script>
+
+</body>
+</html>
+<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ps-5">
+	<li><a href="/" class="nav-link px-2 text-secondary ps-5">Home</a></li>
+	<li><a href="/foods" class="nav-link px-2 text-white ps-5">Foods</a></li>
+	<li><a href="/faqs" class="nav-link px-2 text-white ps-5">FAQs</a></li>
+	<li><a href="#" class="nav-link px-2 text-white ps-5">About</a></li>
+</ul>
+

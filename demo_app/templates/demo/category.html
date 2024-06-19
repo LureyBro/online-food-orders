@@ -1,0 +1,51 @@
+{% extends "layouts.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+<title> category</title>
+{% endblock %}
+
+{% block main_content %}
+{% for msg in messages %}
+{% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<div class="alert alert-success">
+	{{msg}}
+</div>
+{% endif %}
+{% endfor %}
+<div class="container-fluid mt-4">
+	<div class="row d-flex justify-content-center">
+		<div class="col-md-6">
+
+
+			<table border="2" class="table table-bordered  table-hover">
+				<thead>
+					<tr>
+						<th>Category Name</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{% for post in category %}
+					<tr>
+						<td>{{post.category_name}}</td>
+						<td>
+							<a href="/demo/update_category/{{post.id}}" class="btn btn-primary text-white">
+								<i class="bx bxs-edit"></i>
+							</a>
+							&nbsp;
+							<a href="/demo/delete_category/{{post.id}}" class="btn btn-danger text-white"
+								onclick="return confirm('Are You Soure want to Delete this Recipy?')">
+								<i class="bx bxs-trash-alt"></i>
+							</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

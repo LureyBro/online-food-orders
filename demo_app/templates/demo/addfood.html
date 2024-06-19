@@ -1,0 +1,39 @@
+{% extends "layouts.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+<title>Add Recipe</title>
+{% endblock %}
+
+{% block main_content %}
+<div class="container-fluid mt-4">
+	<div class="d-flex justify-content-center">
+		<div class="col-md-6">
+			<h2 class="text-muted text-center">
+				Add Food Form
+			</h2>
+			{% for msg in messages %}
+			{% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+			<div class="alert alert-success">
+				{{msg}}
+			</div>
+			{% endif %}
+			{% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+			<div class="alert alert-danger">
+				{{msg}}
+			</div>
+			{% endif %}
+			{% endfor %}
+			
+			<form action="" class="shadow-lg p-3" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form | crispy }}
+				<div class="mt-3">
+					<input type="submit" value="Add Recipe" class="btn btn-primary">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
